@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@source "./";
+
+/* Base UI: establish a stacking context at the root so portalled
+   popups (Dialog, Select, Menu, Tooltip) layer above page content. */
+html {
+  isolation: isolate;
+}
+body {
+  position: relative;
+}
+
+@theme {
+  /* Core surfaces */
+  --color-abyss: #0b0f19;
+  --color-navy: #111827;
+  --color-glass: rgba(15, 23, 42, 0.6);
+  --color-glass-border: rgba(255, 255, 255, 0.05);
+
+  /* Trading signal palette */
+  --color-long: #00ffa3;
+  --color-long-dim: rgba(0, 255, 163, 0.12);
+  --color-short: #ff4a5a;
+  --color-short-dim: rgba(255, 74, 90, 0.12);
+  --color-ai: #6366f1;
+  --color-ai-dim: rgba(99, 102, 241, 0.12);
+  --color-gold: #ffc53d;
+
+  /* Text */
+  --color-fg: #e2e8f0;
+  --color-fg-muted: #94a3b8;
+  --color-fg-faint: #64748b;
+
+  /* Fonts */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radius */
+  --radius-card: 1rem;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-slide-up: slide-up 0.4s ease-out both;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+body {
+  background-color: var(--color-abyss);
+  color: var(--color-fg);
+  font-family: var(--font-display);
+}
+
+.glass-card {
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-card);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
